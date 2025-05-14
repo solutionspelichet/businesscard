@@ -112,11 +112,12 @@
              display: flex;
              justify-content: center;
              align-items: center;
+             flex-direction: column;
          }
 
          /* --- Custom Button Styles (Exact Match) --- */
          .custom-button {
-             display: inline-block;
+             display: block;
              padding: 6px 12px;
              background-color: #6666ff;
              color: #ffffff;
@@ -125,8 +126,8 @@
              border: 1px solid #6666ff;
              font-size: 13px;
              text-align: center;
-             min-width: 100px;
-             margin: 5px;
+             width: 100%;
+             margin: 5px auto;
          }
 
          .custom-button:hover {
@@ -144,8 +145,8 @@
              border: 1px solid #6666ff;
              font-size: 16px;
              text-align: center;
-             width: calc(200px + 10px);
-             margin: 15px auto 0;
+             width: 100%;
+             margin: 15px auto 5px;
          }
 
          .vcard-button:hover {
