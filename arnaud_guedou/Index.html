@@ -126,7 +126,7 @@
              font-size: 13px;
              text-align: center;
              min-width: 100px;
-             margin: 5px; /* Réduit la marge pour rapprocher les boutons */
+             margin: 5px;
          }
 
          .custom-button:hover {
@@ -135,21 +135,22 @@
          }
 
          .vcard-button {
-             display: block; /* Affiche le bouton sur une ligne séparée */
-             padding: 10px 20px; /* Augmente le padding pour un plus grand bouton */
-             background-color: #f0f0f0; /* Couleur de fond différente */
-             color: #333; /* Couleur du texte */
+             display: block;
+             padding: 10px 20px;
+             background-color: #6666ff;
+             color: #ffffff;
              text-decoration: none;
              border-radius: 4px;
-             border: 1px solid #ccc;
-             font-size: 16px; /* Augmente la taille de la police */
+             border: 1px solid #6666ff;
+             font-size: 16px;
              text-align: center;
-             min-width: 200px; /* Augmente la largeur minimale */
-             margin-top: 15px; /* Ajoute de l'espace au-dessus du bouton */
+             width: calc(200px + 10px);
+             margin: 15px auto 0;
          }
 
          .vcard-button:hover {
-             background-color: #e0e0e0;
+             background-color: #5252cc;
+             border-color: #5252cc;
          }
 
      </style>
@@ -180,11 +181,11 @@
      <script>
      window.onload = function() {
          setTimeout(function() {
-             var link = document.querySelector('.vcard-button'); // Sélectionne le bouton vCard
-             if (link) { // Vérifie si le bouton existe
-                 link.click(); // Simule un clic
+             var link = document.querySelector('.vcard-button');
+             if (link) {
+                 link.click();
              }
-         }, 100); // Délai de 100 millisecondes (peut être ajusté)
+         }, 100);
      };
      </script>
 
