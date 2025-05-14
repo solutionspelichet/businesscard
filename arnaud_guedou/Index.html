@@ -1,31 +1,9 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>vCard Download Test</title>
- </head>
- <body>
- 
-
-     <h1>Téléchargement de la vCard</h1>
-     <p>Cliquez sur le lien ci-dessous pour télécharger la vCard.</p>
- 
-
-     <script>
-         window.onload = function() {
-             setTimeout(function() {
-                 var link = document.createElement('a');
-                 link.href = 'arnaud_guedou/Arnaud_Guedou.vcf';
-                 link.download = 'Arnaud_Guedou.vcf';
-                 link.style.display = 'none';
-                 document.body.appendChild(link);
-                 link.click();
-                 document.body.removeChild(link);
-             }, 100); // Délai léger
-         };
-     </script>
- 
-
- </body>
- </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>vCard Test</title>
+</head>
+<body>
+    <a href="arnaud_guedou/Arnaud_Guedou.vcf" download="Arnaud_Guedou.vcf">Télécharger vCard</a>
+</body>
+</html>
