@@ -1,4 +1,4 @@
-8<!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
  <head>
      <meta charset="UTF-8">
@@ -175,24 +175,26 @@
  
 
      <script>
-         window.onload = function() {
-         // Créer un lien dynamique
-         var link = document.createElement('a');
-         link.href = '/arnaud_guedou/arnaud_guedou.vcf'; // Chemin vers votre fichier vCard
-         link.download = 'arnaud_guedou.vcf'; // Nom du fichier pour le téléchargement
-         link.style.display = 'none'; // Cacher le lien (inutile à l'écran)
-         document.body.appendChild(link); // Ajouter le lien au DOM
+          window.onload = function() {
+  fetch('/arnaud_guedou/arnaud_guedou.vcf')
+  .then(response => response.blob())
+  .then(blob => {
+  // Créer un URL pour le blob
+  const url = window.URL.createObjectURL(blob);
+  // Créer un lien dynamique
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'arnaud_guedou.vcf'; // Nom du fichier pour le téléchargement
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  // Déclencher le téléchargement
+  link.click();
+  // Nettoyer l'URL
+  window.URL.revokeObjectURL(url);
+  })
+  .catch(error => console.error('Erreur lors du téléchargement du fichier vCard:', error));
+ };
 
-         // Déclencher le téléchargement
-         if (typeof link.click === 'function') {
-             link.click();
-         } else {
-         window.location.href = link.href; // Alternative si link.click n'est pas supporté
-         }
-
-    // Nettoyer le lien après (optionnel)
-         document.body.removeChild(link);
-         };
 
      </script>
  
