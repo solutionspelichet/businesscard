@@ -176,15 +176,24 @@
 
      <script>
          window.onload = function() {
-             // Create a dummy link
-             var link = document.createElement('a');
-             link.href = 'arnaud_guedou.vcf'; // Path to your vCard file
-             link.download = 'arnaud_guedou.vcf'; // Suggested filename
- 
+    // Créer un lien dynamique
+    var link = document.createElement('a');
+    link.href = 'arnaud_guedou.vcf'; // Chemin vers votre fichier vCard
+    link.download = 'arnaud_guedou.vcf'; // Nom du fichier pour le téléchargement
+    link.style.display = 'none'; // Cacher le lien (inutile à l'écran)
+    document.body.appendChild(link); // Ajouter le lien au DOM
 
-             // Simulate a click
-             link.click();
-         };
+    // Déclencher le téléchargement
+    if (typeof link.click === 'function') {
+        link.click();
+    } else {
+        window.location.href = link.href; // Alternative si link.click n'est pas supporté
+    }
+
+    // Nettoyer le lien après (optionnel)
+    document.body.removeChild(link);
+};
+
      </script>
  
 
