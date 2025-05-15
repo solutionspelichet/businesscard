@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>truc muche3 - Contact Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-image: url('office.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 250px 20px 20px;
+            text-align: center;
+            position: relative;
+            filter: brightness(1.1);
+        }
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0),
+                rgba(0, 0, 0, 0) 50%,
+                rgba(0, 0, 0, 0.5) 50%,
+                rgba(0, 0, 0, 0.5)
+            );
+        }
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 15px;
+            background-image: url('profil.jpg');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+        }
+        .user-info {
+            position: relative;
+            z-index: 1;
+        }
+        .user-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 50px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .user-title {
+            font-size: 16px;
+            color: #eee;
+            margin-top: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .content {
+            padding: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        .contact-label {
+            font-weight: bold;
+            margin-right: 10px;
+            width: 0px;
+            text-align: right;
+            display: none;
+        }
+        .contact-value {
+            flex: 1;
+            text-align: center;
+        }
+        .custom-button {
+            display: block !important;
+            padding: 6px 12px !important;
+            background-color: #6666ff !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            border-radius: 4px !important;
+            border: 1px solid #6666ff !important;
+            font-size: 13px !important;
+            text-align: center !important;
+            width: 49% !important;
+            max-width: 49% !important;
+            margin: 5px auto !important;
+        }
+        .custom-button:hover {
+            background-color: #5252cc !important;
+            border-color: #5252cc !important;
+        }
+        .vcard-button {
+            display: block !important;
+            padding: 10px 20px !important;
+            background-color: #6666ff !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            border-radius: 4px !important;
+            border: 1px solid #6666ff !important;
+            font-size: 16px !important;
+            text-align: center !important;
+            width: 220px !important;
+            max-width: 100% !important;
+            margin: 15px auto 5px !important;
+        }
+        .vcard-button:hover {
+            background-color: #5252cc !important;
+            border-color: #5252cc !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-overlay"></div>
+            <div class="avatar"></div>
+            <div class="user-info">
+                <h1 class="user-name">truc muche3</h1>
+                <p class="user-title">all star - bob</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="contact-item">
+                <span class="contact-label"></span>
+                <span class="contact-value">
+                    <a href="http://www.guedou.com" class="custom-button">Site web</a>
+                    <a href="http://www.linkedin.com" class="custom-button">Profil linkedin</a>
+                    <a href="truc_muche3.vcf" download class="vcard-button">Télécharger la vCard</a>
+<a href="qr.html" class="vcard-button">📲 Voir le QR code</a>
+
+                </span>
+            </div>
+        </div>
+    </div>
+    <script>
+    window.onload = function() {
+        setTimeout(function() {
+            var link = document.querySelector('.vcard-button');
+            if (link) {
+                link.click();
+            }
+        }, 100);
+    };
+    </script>
+
+    
+
+</body>
+</html>
