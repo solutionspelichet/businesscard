@@ -109,7 +109,12 @@
          .contact-value {
              flex: 1;
              text-align: center;
-             display: block; /* Changed from flex */
+         }
+
+         .button-container {
+             width: 100%;
+             max-width: 220px;
+             margin: 0 auto;
          }
 
          /* --- Custom Button Styles (Exact Match) --- */
@@ -124,7 +129,7 @@
              font-size: 13px;
              text-align: center;
              width: 100%;
-             margin: 5px auto; /* Centering with auto */
+             margin: 5px 0;
          }
 
          .custom-button:hover {
@@ -143,7 +148,7 @@
              font-size: 16px;
              text-align: center;
              width: 100%;
-             margin: 15px auto 5px; /* Centering with auto */
+             margin: 15px 0 5px;
          }
 
          .vcard-button:hover {
@@ -167,11 +172,11 @@
          <div class="content">
              <div class="contact-item">
                  <span class="contact-label"></span>
-                 <span class="contact-value">
+                 <div class="button-container">
                      <a href="http://www.pelichet.ch" class="custom-button">Site web</a>
                      <a href="https://www.linkedin.com/in/arnaud-guedou-64a6a616" class="custom-button">Profil linkedin</a>
                      <a href="https://solutionspelichet.github.io/businesscard/arnaud_guedou/Arnaud_Guedou.vcf" download="Arnaud_Guedou.vcf" class="vcard-button">Télécharger la vCard</a>
-                 </span>
+                 </div>
              </div>
          </div>
      </div>
