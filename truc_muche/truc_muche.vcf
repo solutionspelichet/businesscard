@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:muche;truc
+FN:truc muche
+TITLE:all star
+ORG:bob
+TEL;TYPE=WORK,VOICE:+996523256456
+EMAIL;TYPE=PREF,INTERNET:bob@trucmuche.com
+URL:http://www.guedou.com
+END:VCARD
