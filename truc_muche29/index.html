@@ -17,37 +17,35 @@
     }
 
     .container {
-      max-width: 200px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+      max-width: 400px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
     }
 
-    .header {
-       background-image: url('office.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 150px 20px 20px;
-            text-align: center;
-            position: relative;
-            filter: brightness(1.1);
+    .header img {
+      width: 100%;  /* Contrôle de la largeur */
+      height: auto;
+      display: block;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
     }
 
     .avatar {
-       width: 90px; /* 130px - 30% */
-            height: 90px;
-            border-radius: 15px;
-            background-image: url('profile.jpg');
-            background-size: cover;
-            background-position: center;
-            position: absolute;
-            top: 54px; /* 90px - 40% = 54px */
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-            z-index: 1;
+      width: 130px;
+      height: 130px;
+      border-radius: 15px;
+      background-image: url("profile.jpg");
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      z-index: 1;
     }
 
     .user-info {
@@ -60,7 +58,7 @@
     }
 
     .user-name {
-      font-size: 18px;
+      font-size: 24px;
       font-weight: bold;
       margin: 10px 0 5px;
     }
@@ -76,14 +74,14 @@
     .custom-button {
       display: block;
       padding: 10px;
-      font-size: 12px;
+      font-size: 14px;
       border-radius: 4px;
       text-align: center;
       margin: 10px auto;
       background-color: #6666ff;
       color: white;
       text-decoration: none;
-      width: 70%;
+      width: 40%;
     }
 
     .buttons a:hover {
@@ -95,8 +93,8 @@
 
 <div class="container">
   <div class="header">
-     <div class="header-overlay"></div>
-     <div class="avatar"></div>
+    <img src="office.jpg" alt="Photo bureau">
+    <div class="avatar"></div>
   </div>
   <div class="user-info">
     <div class="user-name">truc muche29</div>
