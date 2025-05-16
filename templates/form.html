@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Créer votre carte de visite</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Créer une carte de visite</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,80 +15,91 @@
       align-items: center;
       min-height: 100vh;
     }
+
     .form-container {
-      width: 90%;
-      max-width: 400px;
-      background-color: #ffffff;
+      background-color: white;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
     }
+
     h2 {
       text-align: center;
-      color: #333;
+      margin-bottom: 20px;
     }
+
     label {
       display: block;
-      margin-top: 10px;
+      margin-bottom: 5px;
       font-weight: bold;
     }
-    input[type="text"], input[type="email"], input[type="url"], input[type="tel"], input[type="file"] {
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="file"] {
       width: 100%;
       padding: 8px;
-      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 4px;
       border: 1px solid #ccc;
-      border-radius: 5px;
     }
+
     button {
-      width: 100%;
       background-color: #6666ff;
       color: white;
+      padding: 10px;
       border: none;
-      padding: 12px;
-      border-radius: 5px;
-      margin-top: 20px;
-      font-size: 16px;
+      width: 100%;
+      border-radius: 4px;
       cursor: pointer;
+      font-size: 16px;
     }
+
     button:hover {
       background-color: #4d4ddf;
     }
   </style>
 </head>
 <body>
-  <form class="form-container" action="/submit" method="POST" enctype="multipart/form-data">
-    <h2>Créer votre carte de visite</h2>
-    <label for="first_name">Prénom</label>
-    <input type="text" name="first_name" required>
+  <div class="form-container">
+    <h2>Créer ma carte de visite</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <label for="first_name">Prénom *</label>
+      <input type="text" name="first_name" id="first_name" required>
 
-    <label for="last_name">Nom</label>
-    <input type="text" name="last_name" required>
+      <label for="last_name">Nom *</label>
+      <input type="text" name="last_name" id="last_name" required>
 
-    <label for="job_title">Poste</label>
-    <input type="text" name="job_title">
+      <label for="job_title">Poste</label>
+      <input type="text" name="job_title" id="job_title">
 
-    <label for="company">Entreprise</label>
-    <input type="text" name="company">
+      <label for="company">Entreprise</label>
+      <input type="text" name="company" id="company">
 
-    <label for="email">Email</label>
-    <input type="email" name="email">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email">
 
-    <label for="phone">Téléphone</label>
-    <input type="tel" name="phone">
+      <label for="phone">Téléphone</label>
+      <input type="tel" name="phone" id="phone">
 
-    <label for="website">Site Web</label>
-    <input type="url" name="website">
+      <label for="website">Site Web</label>
+      <input type="url" name="website" id="website">
 
-    <label for="linkedin">Profil LinkedIn</label>
-    <input type="url" name="linkedin">
+      <label for="linkedin">Profil LinkedIn</label>
+      <input type="url" name="linkedin" id="linkedin">
 
-    <label for="profile">Photo de profil</label>
-    <input type="file" name="profile" accept="image/*">
+      <label for="profile">Photo de profil</label>
+      <input type="file" name="profile" id="profile" accept="image/*">
 
-    <label for="office">Photo bureau</label>
-    <input type="file" name="office" accept="image/*">
+      <label for="office">Photo du bureau</label>
+      <input type="file" name="office" id="office" accept="image/*">
 
-    <button type="submit">Générer la carte</button>
-  </form>
+      <button type="submit">Générer la carte</button>
+    </form>
+  </div>
 </body>
 </html>
