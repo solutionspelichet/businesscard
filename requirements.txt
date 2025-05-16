@@ -2,3 +2,5 @@ Flask
 qrcode
 python-dotenv
 PyGithub
+gunicorn
+PyGithub
