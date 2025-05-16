@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Générateur de carte de visite</title>
+</head>
+<body>
+    <h2>Formulaire de création</h2>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        Prénom: <input type="text" name="first_name"><br>
+        Nom: <input type="text" name="last_name"><br>
+        Poste: <input type="text" name="job_title"><br>
+        Entreprise: <input type="text" name="company"><br>
+        Email: <input type="email" name="email"><br>
+        Téléphone: <input type="text" name="phone"><br>
+        Lien LinkedIn: <input type="url" name="linkedin"><br>
+        Site Web: <input type="url" name="website"><br>
+        Photo de profil: <input type="file" name="photo"><br>
+        <input type="submit" value="Générer">
+    </form>
+</body>
+</html>
