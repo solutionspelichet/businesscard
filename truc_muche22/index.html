@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>truc muche22 - Carte de visite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 400px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .header img {
+      width: 100%;  /* Contrôle de la largeur */
+      height: auto;
+      display: block;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 15px;
+      background-image: url("profile.jpg");
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .user-info {
+      margin-top: 20px;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+      margin-bottom: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+    }
+
+    .user-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+
+    .user-title {
+      font-size: 14px;
+    }
+
+    .buttons {
+      padding: 20px;
+    }
+
+    .custom-button {
+      display: block;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 4px;
+      text-align: center;
+      margin: 10px auto;
+      background-color: #6666ff;
+      color: white;
+      text-decoration: none;
+      width: 40%;
+    }
+
+    .buttons a:hover {
+      background-color: #4d4ddf;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <img src="office.jpg" alt="Photo bureau">
+    <div class="avatar"></div>
+  </div>
+  <div class="user-info">
+    <div class="user-name">truc muche22</div>
+    <div class="user-title">all star - bob</div>
+  </div>
+  <div class="buttons">
+    <a href="http://www.guedou.com" class="custom-button">Site web</a>
+    <a href="http://www.linkedin.com" class="custom-button">LinkedIn</a>
+    <a href="truc_muche22.vcf" download="truc_muche22.vcf" class="custom-button">Télécharger la vCard</a>
+    <a href="qr.html" class="custom-button">Voir le QR Code</a>
+  </div>
+</div>
+
+<script>
+  window.onload = function() {
+    setTimeout(function() {
+      const link = document.querySelector('a[download]');
+      if (link) link.click();
+    }, 500);
+  };
+</script>
+
+</body>
+</html>
