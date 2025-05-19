@@ -1,7 +1,7 @@
 import os
 import shutil
 import qrcode
-from flask import Flask, request, render_template_string
+from flask import Flask, request, render_template
 from github import Github
 from datetime import datetime
 
