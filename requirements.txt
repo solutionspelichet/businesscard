@@ -4,3 +4,4 @@ python-dotenv
 PyGithub
 gunicorn
 PyGithub
+Pillow
