@@ -8,35 +8,26 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      margin: 0;
     }
     .form-container {
-      width: 90%;
-      max-width: 500px;
-      background-color: #ffffff;
+      background-color: #fff;
       padding: 20px;
       border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      color: #333;
     }
     label {
       display: block;
-      margin-top: 10px;
+      margin-top: 15px;
       font-weight: bold;
     }
-    input[type="text"],
-    input[type="email"],
-    input[type="url"],
-    input[type="tel"],
-    input[type="file"] {
+    input {
       width: 100%;
       padding: 8px;
       margin-top: 5px;
@@ -44,15 +35,14 @@
       border-radius: 5px;
     }
     button {
+      margin-top: 20px;
       width: 100%;
+      padding: 10px;
       background-color: #6666ff;
       color: white;
       border: none;
-      padding: 12px;
       border-radius: 5px;
-      margin-top: 20px;
       font-size: 16px;
-      cursor: pointer;
     }
     button:hover {
       background-color: #4d4ddf;
@@ -62,38 +52,27 @@
 <body>
   <form class="form-container" action="/submit" method="POST" enctype="multipart/form-data">
     <h2>Créer votre carte de visite</h2>
-
-    <label for="first_name">Prénom</label>
+    <label>Prénom</label>
     <input type="text" name="first_name" required>
-
-    <label for="last_name">Nom</label>
+    <label>Nom</label>
     <input type="text" name="last_name" required>
-
-    <label for="job_title">Poste</label>
+    <label>Poste</label>
     <input type="text" name="job_title">
-
-    <label for="company">Entreprise</label>
+    <label>Entreprise</label>
     <input type="text" name="company">
-
-    <label for="email">Email</label>
+    <label>Email</label>
     <input type="email" name="email">
-
-    <label for="phone">Téléphone</label>
+    <label>Téléphone</label>
     <input type="tel" name="phone">
-
-    <label for="website">Site Web</label>
+    <label>Site Web</label>
     <input type="url" name="website">
-
-    <label for="linkedin">Profil LinkedIn</label>
+    <label>LinkedIn</label>
     <input type="url" name="linkedin">
-
-    <label for="photo">Photo de profil</label>
-    <input type="file" name="photo" accept="image/*" required>
-
-    <label for="office">Photo du bureau</label>
+    <label>Photo de profil</label>
+    <input type="file" name="photo" accept="image/*">
+    <label>Photo bureau</label>
     <input type="file" name="office" accept="image/*">
-
-    <button type="submit">Générer la carte</button>
+    <button type="submit">Générer</button>
   </form>
 </body>
 </html>
