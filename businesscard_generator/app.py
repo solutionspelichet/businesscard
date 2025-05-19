@@ -10,7 +10,7 @@ g = Github(os.getenv("GITHUB_TOKEN"))
 repo = g.get_repo("solutionspelichet/businesscard")
 branch = repo.get_branch("master")
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 def form():
     if request.method == 'POST':
         first_name = request.form.get("first_name", "").strip()
