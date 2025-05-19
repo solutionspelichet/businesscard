@@ -10,9 +10,23 @@ g = Github(os.getenv("GITHUB_TOKEN"))
 repo = g.get_repo("solutionspelichet/businesscard")
 branch = repo.get_branch("master")
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def form():
-    return render_template_string(open("form.html", encoding="utf-8").read())
+    if request.method == 'POST':
+        first_name = request.form.get("first_name", "").strip()
+        last_name = request.form.get("last_name", "").strip()
+        job_title = request.form.get("job_title", "").strip()
+        email = request.form.get("email", "").strip()
+        phone = request.form.get("phone", "").strip()
+        website = request.form.get("website", "").strip()
+        linkedin = request.form.get("linkedin", "").strip()
+        company = request.form.get("company", "").strip()
+
+        # ⚠️ Ajoute ici ton traitement si tu veux sauvegarder/générer un fichier ou envoyer une réponse personnalisée
+
+        return f"Formulaire bien reçu pour : {first_name} {last_name} – {job_title} chez {company}"
+
+    return render_template('form.html')
 
 @app.route('/qr/<slug>')
 def qr_page(slug):
@@ -188,4 +202,4 @@ END:VCARD
 if __name__ == "__main__":
    import os
 port = int(os.environ.get("PORT", 5000))
-app.run(host="0.0.0.0", port=port)
+app.run(debug=True)
