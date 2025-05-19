@@ -1,14 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>{{FULL_NAME}} - Carte de visite</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{FULL_NAME}}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background: white;
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .button {
+      display: block;
+      background-color: #6666ff;
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px auto;
+      width: 80%;
+    }
+  </style>
 </head>
 <body>
-    <h1>{{FULL_NAME}}</h1>
-    <h2>{{TITLE}}</h2>
-    <p><a href="{{WEBSITE}}">Site web</a></p>
-    <p><a href="{{LINKEDIN}}">LinkedIn</a></p>
-    <a href="{{VCF_FILENAME}}" download>Télécharger la vCard</a>
+  <div class="container">
+    <img src="office.jpg" alt="Bureau">
+    <img src="profil.jpg" alt="Profil" style="width:100px; margin: 10px 0;">
+    <div class="title">{{FULL_NAME}}</div>
+    <div>{{TITLE}}</div>
+    <a class="button" href="{{WEBSITE}}">Site web</a>
+    <a class="button" href="{{LINKEDIN}}">LinkedIn</a>
+    <a class="button" href="{{VCF_FILENAME}}" download>Télécharger la vCard</a>
+  </div>
 </body>
 </html>
