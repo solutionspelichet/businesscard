@@ -1,14 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="fr">
-
-<form method="POST" action="/submit" enctype="multipart/form-data">
-  <input type="text" name="first_name" placeholder="Prénom" required />
-  <input type="text" name="last_name" placeholder="Nom" required />
-  <!-- Ajoute les autres champs ici -->
-  <button type="submit">Envoyer</button>
-</form>
-  
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -67,6 +58,7 @@
 <body>
   <form class="form-container" action="/submit" method="POST" enctype="multipart/form-data">
     <h2>Créer votre carte de visite</h2>
+
     <label for="first_name">Prénom</label>
     <input type="text" name="first_name" required>
 
