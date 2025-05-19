@@ -21,84 +21,66 @@ def form():
 @app.route('/submit', methods=['POST'])
 def submit():
     try:
-        
-        user_dir = os.path.join("generated", full_name)
-        os.makedirs(user_dir, exist_ok=True)
-
-        
-        # Champs requis
-        required_fields = ['first_name', 'last_name', 'email']
-        for field in required_fields:
-            if not request.form.get(field):
-                return f"Erreur : le champ {field} est requis.", 400
-
-        # Fichier requis
-        photo = request.files.get('photo')
-        if not photo or photo.filename == "":
-            return "Erreur : vous devez téléverser une photo de profil.", 400
-
-        # Lecture des données
         first_name = request.form['first_name'].strip()
         last_name = request.form['last_name'].strip()
         full_name = f"{first_name}_{last_name}".lower().replace(" ", "_")
-        email = request.form.get('email', "")
-        phone = request.form.get('phone', "")
-        job_title = request.form.get('job_title', "")
-        company = request.form.get('company', "")
-        linkedin = request.form.get('linkedin', "")
-        website = request.form.get('website', "")
 
-        # Création du dossier utilisateur
+        # ✅ Création du répertoire utilisateur
         user_dir = os.path.join("generated", full_name)
         os.makedirs(user_dir, exist_ok=True)
+        print(f"✅ Dossier utilisateur créé : {user_dir}")
 
-        # Sauvegarde photo de profil
+        email = request.form['email']
+        phone = request.form['phone']
+        job_title = request.form['job_title']
+        company = request.form['company']
+        linkedin = request.form['linkedin']
+        website = request.form['website']
+        photo = request.files['photo']
+
+        # 📸 Sauvegarde de la photo
         photo_path = os.path.join(user_dir, "profil.jpg")
         photo.save(photo_path)
 
-        # Sauvegarde de la photo de bureau (par défaut)
+        # 🏢 Copie de l’image du bureau
         office_src = os.path.join("static", "office.jpg")
         office_dst = os.path.join(user_dir, "office.jpg")
         if os.path.exists(office_src):
             with open(office_src, 'rb') as src, open(office_dst, 'wb') as dst:
                 dst.write(src.read())
 
-        # Création du fichier VCF
-        vcf_content = f"""BEGIN:VCARD
-VERSION:3.0
-N:{last_name};{first_name}
-FN:{first_name} {last_name}
-TITLE:{job_title}
-ORG:{company}
-TEL;TYPE=WORK,VOICE:{phone}
-EMAIL;TYPE=PREF,INTERNET:{email}
-URL:{website}
-END:VCARD
-"""
-        vcf_path = os.path.join(user_dir, f"{full_name}.vcf")
-        with open(vcf_path, "w", encoding="utf-8") as f:
+        # 📇 Génération du fichier VCF
+        vcf_content = "BEGIN:VCARD\nVERSION:3.0\n"
+        vcf_content += f"N:{last_name};{first_name}\n"
+        vcf_content += f"FN:{first_name} {last_name}\n"
+        vcf_content += f"TITLE:{job_title}\n"
+        vcf_content += f"ORG:{company}\n"
+        vcf_content += f"TEL;TYPE=WORK,VOICE:{phone}\n"
+        vcf_content += f"EMAIL;TYPE=PREF,INTERNET:{email}\n"
+        vcf_content += f"URL:{website}\nEND:VCARD"
+        with open(os.path.join(user_dir, f"{full_name}.vcf"), "w") as f:
             f.write(vcf_content.replace("\n", "\r\n"))
 
-        # Lecture du template HTML et génération
-        with open('templates/index_template.html', encoding="utf-8") as tpl:
-            html_template = tpl.read()
+        # 🧾 Génération de la page HTML
+        with open('templates/index_template.html') as tpl_file:
+            html_template = tpl_file.read()
         html_filled = html_template.replace("{{FULL_NAME}}", f"{first_name} {last_name}")\
-                                   .replace("{{TITLE}}", f"{job_title} - {company}")\
-                                   .replace("{{WEBSITE}}", website)\
-                                   .replace("{{LINKEDIN}}", linkedin)\
-                                   .replace("{{VCF_FILENAME}}", f"{full_name}.vcf")
-        with open(os.path.join(user_dir, "index.html"), "w", encoding="utf-8") as f:
+                                    .replace("{{TITLE}}", f"{job_title} - {company}")\
+                                    .replace("{{WEBSITE}}", website)\
+                                    .replace("{{LINKEDIN}}", linkedin)\
+                                    .replace("{{VCF_FILENAME}}", f"{full_name}.vcf")
+        with open(os.path.join(user_dir, "index.html"), "w") as f:
             f.write(html_filled)
 
-        # Génération du QR code
+        # 📲 Génération du QR code
         card_url = f"https://solutionspelichet.github.io/businesscard/{full_name}/index.html"
         qr = qrcode.make(card_url)
         qr.save(os.path.join(user_dir, "qr.png"))
 
-        return f"✅ Carte générée pour <strong>{first_name} {last_name}</strong>. <br>Dossier : <code>{user_dir}</code>"
-
+        return f"✅ Carte générée pour {first_name} {last_name}. Dossier : {user_dir}"
     except Exception as e:
-        return f"Erreur : {str(e)}", 500
+        return f"❌ Erreur : {e}"
+
 
 
 if __name__ == '__main__':
