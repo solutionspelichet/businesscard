@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{full_name} - Carte de visite</title>
+  <title>Yo Jrig - Carte de visite</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -31,6 +31,7 @@
       position: relative;
       width: 100%;
       height: 200px;
+      overflow: hidden;
     }
 
     .header img {
@@ -44,7 +45,7 @@
       width: 110px;
       height: 110px;
       border-radius: 15px;
-      background-image: url("{profile_img}");
+      background-image: url("profile.jpg");
       background-size: cover;
       background-position: center;
       position: absolute;
@@ -98,17 +99,17 @@
 
 <div class="container">
   <div class="header">
-    <img src="{office_img}" alt="Photo bureau">
+    <img src="office.jpg" alt="Photo bureau">
     <div class="avatar"></div>
   </div>
   <div class="user-info">
-    <div class="user-name">{full_name}</div>
-    <div class="user-title">{job_title} - {company}</div>
+    <div class="user-name">Yo Jrig</div>
+    <div class="user-title">Hhf - T</div>
   </div>
   <div class="buttons">
-    <a href="{website}" class="custom-button">Site web</a>
-    <a href="{linkedin}" class="custom-button">LinkedIn</a>
-    <a href="{vcard_filename}" download="{vcard_filename}" class="custom-button">Télécharger la vCard</a>
+    <a href="http://www. " class="custom-button" target="_blank">Site web</a>
+    <a href="http://www " class="custom-button" target="_blank">LinkedIn</a>
+    <a href="yo_jrig.vcf" download="yo_jrig.vcf" class="custom-button">Télécharger la vCard</a>
     <a href="qr.html" class="custom-button">Voir le QR Code</a>
   </div>
 </div>
