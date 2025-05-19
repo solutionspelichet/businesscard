@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+print(f"✅ Dossier utilisateur créé : {user_dir}")
+
 
 load_dotenv()
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
