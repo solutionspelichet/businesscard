@@ -1,54 +1,96 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Créer une carte de visite</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; }
-        label { display: block; margin-top: 15px; font-weight: bold; }
-        input, textarea, button { width: 100%; padding: 8px; margin-top: 5px; }
-        button { background-color: #6666ff; color: white; border: none; margin-top: 20px; cursor: pointer; }
-        button:hover { background-color: #5252cc; }
-        p.info { font-size: 13px; color: #555; margin: 5px 0 15px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Créer votre carte de visite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      width: 90%;
+      max-width: 400px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="email"], input[type="url"], input[type="tel"], input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      background-color: #6666ff;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #4d4ddf;
+    }
+  </style>
 </head>
 <body>
-    <h1>Créer votre carte de visite numérique</h1>
-    <form action="/submit" method="post" enctype="multipart/form-data">
-        <label for="first_name">Prénom</label>
-        <input type="text" name="first_name" id="first_name" required>
+  <!-- Fichier mis à jour correctement -->
+  <form class="form-container" action="/submit" method="POST" enctype="multipart/form-data">
+    <h2>Créer votre carte de visite</h2>
 
-        <label for="last_name">Nom</label>
-        <input type="text" name="last_name" id="last_name" required>
+    <label for="first_name">Prénom</label>
+    <input type="text" name="first_name" required>
 
-        <label for="job_title">Poste</label>
-        <input type="text" name="job_title" id="job_title" required>
+    <label for="last_name">Nom</label>
+    <input type="text" name="last_name" required>
 
-        <label for="company">Entreprise</label>
-        <input type="text" name="company" id="company" required>
+    <label for="job_title">Poste</label>
+    <input type="text" name="job_title">
 
-        <label for="phone">Téléphone</label>
-        <input type="text" name="phone" id="phone">
+    <label for="company">Entreprise</label>
+    <input type="text" name="company">
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email">
+    <label for="email">Email</label>
+    <input type="email" name="email">
 
-        <label for="website">Site web</label>
-        <input type="text" name="website" id="website">
+    <label for="phone">Téléphone</label>
+    <input type="tel" name="phone">
 
-        <label for="linkedin">Profil LinkedIn</label>
-        <input type="text" name="linkedin" id="linkedin">
+    <label for="website">Site Web</label>
+    <input type="url" name="website">
 
-        <label for="photo">Photo de profil</label>
-        <p class="info">Si vous ne téléversez rien, une photo générique sera utilisée.</p>
-        <input type="file" name="photo" id="photo">
+    <label for="linkedin">Profil LinkedIn</label>
+    <input type="url" name="linkedin">
 
-        <label for="background">Photo de fond (bannière)</label>
-        <p class="info">Si vous ne téléversez rien, une bannière générique sera utilisée.</p>
-        <input type="file" name="background" id="background">
+    <label for="profile">Photo de profil</label>
+    <input type="file" name="profile" accept="image/*">
 
-        <button type="submit">Générer</button>
-    </form>
+    <label for="office">Photo bureau</label>
+    <input type="file" name="office" accept="image/*">
+
+    <button type="submit">Générer la carte</button>
+  </form>
 </body>
 </html>
