@@ -92,6 +92,7 @@ END:VCARD
 
     except Exception as e:
         return f"Erreur : {str(e)}", 500
+os.makedirs("generated", exist_ok=True)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
