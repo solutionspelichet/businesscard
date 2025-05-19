@@ -70,14 +70,14 @@ END:VCARD
             template = tpl.read()
 
         rendered = template.format(
-            full_name=full_name,
-            job_title=job_title,
-            company=company,
-            website=website,
-            linkedin=linkedin,
-            vcard_filename=vcard_filename,
-            profile_img=profile_img_name,
-            office_img=office_img_name
+    full_name=full_name,
+    job_title=job_title,
+    company=company,
+    website=website,
+    linkedin=linkedin,
+    vcard_filename=vcard_filename,
+    profile_img="profile.jpg",
+    office_img="office.jpg"
         )
 
         # Sauvegarde de la page HTML
