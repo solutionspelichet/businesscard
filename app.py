@@ -78,12 +78,14 @@ END:VCARD""".replace("\n", "\r\n"))
         # Page HTML
         with open('templates/index_template.html', encoding="utf-8") as f:
             template = f.read()
-        html_filled = template.replace("{ full_name }", full_name_display)\
-                              .replace("{ job_title }", job_title)\
-                              .replace("{ company }", company)\
-                              .replace("{ website }", website)\
-                              .replace("{ linkedin }", linkedin)\
-                              .replace("{ vcard_filename }", f"{full_name}.vcf")
+        html_filled = template.format(
+    full_name=full_name_display,
+    job_title=job_title,
+    company=company,
+    website=website,
+    linkedin=linkedin,
+    vcard_filename=f"{full_name}.vcf"
+        )
         index_path = os.path.join(user_dir, "index.html")
         with open(index_path, "w", encoding="utf-8") as f:
             f.write(html_filled)
