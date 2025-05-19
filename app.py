@@ -19,6 +19,11 @@ def form():
 @app.route('/submit', methods=['POST'])
 def submit():
     try:
+        
+        user_dir = os.path.join("generated", full_name)
+        os.makedirs(user_dir, exist_ok=True)
+
+        
         # Champs requis
         required_fields = ['first_name', 'last_name', 'email']
         for field in required_fields:
