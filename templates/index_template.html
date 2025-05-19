@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>{ full_name } - Business Card</title>
+  <title>{{FULL_NAME}} - Business Card</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -45,7 +45,7 @@
       width: 110px;
       height: 110px;
       border-radius: 15px;
-      background-image: url("profil.jpg");
+      background-image: url("profile.jpg");
       background-size: cover;
       background-position: center;
       position: absolute;
@@ -103,13 +103,13 @@
     <div class="avatar"></div>
   </div>
   <div class="user-info">
-    <div class="user-name">{{ full_name }}</div>
-    <div class="user-title">{{ job_title }} - {{ company }}</div>
+    <div class="user-name">{{FULL_NAME}}</div>
+    <div class="user-title">{{TITLE}}</div>
   </div>
   <div class="buttons">
-    <a href="{{ website }}" class="custom-button">Site web</a>
-    <a href="{{ linkedin }}" class="custom-button">LinkedIn</a>
-    <a href="{{ vcard_filename }}" download="{{ vcard_filename }}" class="custom-button">Télécharger la vCard</a>
+    <a href="{{WEBSITE}}" class="custom-button">Site web</a>
+    <a href="{{LINKEDIN}}" class="custom-button">LinkedIn</a>
+    <a href="{{VCF_FILENAME}}" download="{{VCF_FILENAME}}" class="custom-button">Télécharger la vCard</a>
     <a href="qr.html" class="custom-button">Voir le QR Code</a>
   </div>
 </div>
