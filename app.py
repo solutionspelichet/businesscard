@@ -5,8 +5,8 @@ from github import Github
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'static/uploads'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+user_dir = os.path.join("static/uploads", full_name)
+os.makedirs(user_dir, exist_ok=True)
 print(f"✅ Dossier utilisateur créé : {user_dir}")
 
 
