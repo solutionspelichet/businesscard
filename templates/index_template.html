@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#6666ff" />
-  <title>{{ full_name }} - Carte de visite</title>
+  <title>{full_name} - Carte de visite</title>
   <style>
     body {{
       font-family: Arial, sans-serif;
@@ -94,20 +94,20 @@
 <body>
   <div class="container">
     <div class="header">
-      <img src="{{ office_img }}" alt="Photo bureau">
+      <img src="{office_img}" alt="Photo bureau">
       <div class="avatar"></div>
     </div>
     <div class="user-info">
-      <div class="user-name">{{ full_name }}</div>
-      <div class="user-title">{{ job_title }} - {{ company }}</div>
+      <div class="user-name">{full_name}</div>
+      <div class="user-title">{job_title} - {company}</div>
       <div class="instructions">
         Appuyez sur <strong>"Partager"</strong> puis <strong>"Ajouter à l’écran d’accueil"</strong> pour un accès rapide.
       </div>
     </div>
     <div class="buttons">
-      <a href="{{ website }}" class="custom-button" target="_blank">Site web</a>
-      <a href="{{ linkedin }}" class="custom-button" target="_blank">LinkedIn</a>
-      <a href="{{ vcard_filename }}" download class="custom-button">Télécharger la vCard</a>
+      <a href="{website}" class="custom-button" target="_blank">Site web</a>
+      <a href="{linkedin}" class="custom-button" target="_blank">LinkedIn</a>
+      <a href="{vcard_filename}" download class="custom-button">Télécharger la vCard</a>
       <a href="qr.png" class="custom-button" target="_blank">Voir le QR Code</a>
     </div>
   </div>
