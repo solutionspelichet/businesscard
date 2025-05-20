@@ -108,12 +108,11 @@ END:VCARD
         upload_file(os.path.join(user_dir, "qr.html"), github_folder + "qr.html")
 
         return render_template(
-    'confirmation.html',
-    full_name=full_name,
-    slug=full_slug,
-    card_url=card_url
-)
-
+            'confirmation.html',
+            full_name=full_name,
+            slug=full_slug,
+            card_url=card_url
+        )
 
     except Exception as e:
         return f"❌ Erreur : {e}"
@@ -121,3 +120,4 @@ END:VCARD
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
