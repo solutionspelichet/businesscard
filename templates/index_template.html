@@ -100,9 +100,7 @@
     <div class="user-info">
       <div class="user-name">{full_name}</div>
       <div class="user-title">{job_title} - {company}</div>
-      <div class="instructions">
-        Appuyez sur <strong>"Partager"</strong> puis <strong>"Ajouter à l’écran d’accueil"</strong> pour un accès rapide.
-      </div>
+      
     </div>
     <div class="buttons">
       <a href="{website}" class="custom-button" target="_blank">Site web</a>
@@ -111,5 +109,19 @@
       <a href="qr.png" class="custom-button" target="_blank">Voir le QR Code</a>
     </div>
   </div>
+
+  <script>
+  window.onload = function() {
+    const link = document.createElement("a");
+    link.href = "{{vcard_filename}}";
+    link.download = "{{vcard_filename}}";
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+</script>
+
+  
 </body>
 </html>
