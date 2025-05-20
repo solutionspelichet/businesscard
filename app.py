@@ -69,6 +69,16 @@ END:VCARD
         with open("templates/index_template.html", encoding="utf-8") as tpl:
             template = tpl.read()
 
+        # Génération de la page QR avec qr-template.html
+        with open("templates/qr-template.html", encoding="utf-8") as tpl:
+            qr_template = tpl.read()
+
+qr_rendered = qr_template.replace("{full_name}", full_name)
+
+with open(os.path.join(user_dir, "qr.html"), "w", encoding="utf-8") as f:
+    f.write(qr_rendered)
+
+
         rendered = template.format(
     full_name=full_name,
     job_title=job_title,
@@ -83,7 +93,7 @@ END:VCARD
         # Sauvegarde de la page HTML
         with open(os.path.join(user_dir, "index.html"), "w", encoding="utf-8") as html:
             html.write(rendered)
-
+https://github.com/solutionspelichet/businesscard/tree/master
         # Upload GitHub
         g = Github(GITHUB_TOKEN)
         repo = g.get_repo(GITHUB_REPO)
@@ -104,6 +114,8 @@ END:VCARD
         upload_file(vcard_path, github_folder + vcard_filename)
         upload_file(os.path.join(user_dir, "index.html"), github_folder + "index.html")
         upload_file(os.path.join(user_dir, "qr.png"), github_folder + "qr.png")
+        upload_file(os.path.join(user_dir, "qr.html"), github_folder + "qr.html")
+
 
         return render_template(
     'confirmation.html',
