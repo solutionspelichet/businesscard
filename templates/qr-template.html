@@ -32,15 +32,16 @@
       width: 70%;
       max-width: 250px;
       margin: 20px auto;
+      cursor: zoom-in;
     }
     .instructions {
       font-size: 14px;
-      color: #666;
+      color: #555;
       line-height: 1.6;
-      padding: 0 10px;
+      text-align: left;
     }
     .button {
-      margin: 10px auto;
+      margin: 20px auto 0;
       display: block;
       background-color: #6666ff;
       color: white;
@@ -54,19 +55,42 @@
     .button:hover {
       background-color: #4d4ddf;
     }
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Votre QR Code</h2>
+
     <a href="qr.png" target="_blank">
-  <img src="qr.png" alt="QR Code de votre carte de visite" style="cursor: zoom-in;">
-</a>
+      <img src="qr.png" alt="QR Code de votre carte de visite">
+    </a>
+
     <div class="instructions">
-      📱 Scannez ce QR Code avec votre téléphone pour afficher votre carte de visite numérique.<br><br>
-      💡 Astuce : Appuyez longtemps sur l'image pour l'ajouter à votre écran d'accueil.<br><br>
-      🔗 Vous pouvez également accéder à votre carte en cliquant ci-dessous :
+      <div class="section-title">✅ Sur Android (Chrome, Edge...)</div>
+      <ul>
+        <li>Ouvrez cette page dans votre navigateur.</li>
+        <li>Appuyez sur les trois points (en haut à droite).</li>
+        <li>Choisissez <strong>« Ajouter à l'écran d'accueil »</strong>.</li>
+        <li>Nom : ex. « QR Pelichet ».</li>
+        <li>Appuyez sur <strong>« Ajouter »</strong>.</li>
+      </ul>
+      <p>🔗 Si vous voulez afficher uniquement l’image, utilisez le lien direct : <code>qr.png</code>.</p>
+
+      <div class="section-title">🍏 Sur iPhone (Safari uniquement)</div>
+      <ul>
+        <li>Ouvrez cette page dans <strong>Safari</strong>.</li>
+        <li>Appuyez sur l’icône <strong>Partager</strong> (rectangle avec flèche vers le haut).</li>
+        <li>Choisissez <strong>« Sur l’écran d’accueil »</strong>.</li>
+        <li>Nom : ex. « QR Pelichet ».</li>
+        <li>Appuyez sur <strong>« Ajouter »</strong>.</li>
+      </ul>
     </div>
+
     <a href="index.html" class="button">📇 Ouvrir la carte de visite</a>
   </div>
 </body>
