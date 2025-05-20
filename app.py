@@ -35,26 +35,23 @@ def submit():
         os.makedirs(user_dir, exist_ok=True)
 
         # 2. Enregistrement des fichiers
-        # 📸 Photo de profil
-profile_path = os.path.join(user_dir, "profile.jpg")
-if profile_photo and profile_photo.filename:
-    profile_photo.save(profile_path)
-else:
-    default_profile = os.path.join("static", "profile-defaut.jpg")
-    if os.path.exists(default_profile):
-        with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
-            dst.write(src.read())
+        profile_path = os.path.join(user_dir, "profile.jpg")
+        if profile_photo and profile_photo.filename:
+            profile_photo.save(profile_path)
+        else:
+            default_profile = os.path.join("static", "profile-defaut.jpg")
+            if os.path.exists(default_profile):
+                with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
+                    dst.write(src.read())
 
-# 🏢 Photo du bureau
-office_path = os.path.join(user_dir, "office.jpg")
-if office_photo and office_photo.filename:
-    office_photo.save(office_path)
-else:
-    default_office = os.path.join("static", "office-defaut.jpg")
-    if os.path.exists(default_office):
-        with open(default_office, "rb") as src, open(office_path, "wb") as dst:
-            dst.write(src.read())
-
+        office_path = os.path.join(user_dir, "office.jpg")
+        if office_photo and office_photo.filename:
+            office_photo.save(office_path)
+        else:
+            default_office = os.path.join("static", "office-defaut.jpg")
+            if os.path.exists(default_office):
+                with open(default_office, "rb") as src, open(office_path, "wb") as dst:
+                    dst.write(src.read())
 
         # 3. VCF
         vcard_filename = f"{full_slug}.vcf"
@@ -93,7 +90,7 @@ END:VCARD
         with open(os.path.join(user_dir, "index.html"), "w", encoding="utf-8") as html:
             html.write(rendered)
 
-        # 6. qr.html à partir de qr-template
+        # 6. qr.html
         with open("templates/qr-template.html", encoding="utf-8") as tpl:
             qr_template = tpl.read()
         qr_rendered = qr_template.replace("{full_name}", full_name)
@@ -135,4 +132,3 @@ END:VCARD
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
