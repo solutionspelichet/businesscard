@@ -110,17 +110,27 @@
     </div>
   </div>
 
+  
   <script>
-  window.onload = function() {
-    const link = document.createElement("a");
-    link.href = "{{vcard_filename}}";
-    link.download = "{{vcard_filename}}";
-    link.style.display = "none";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-</script>
+    window.onload = function() {
+      const link = document.createElement("a");
+      link.href = "{{vcard_filename}}";
+      link.download = "{{vcard_filename}}";
+      link.style.display = "none";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Affiche le message de confirmation
+      const confirmMsg = document.getElementById("confirmation");
+      confirmMsg.style.display = "block";
+
+      // Masque le message après 4 secondes
+      setTimeout(() => {
+        confirmMsg.style.display = "none";
+      }, 4000);
+    };
+  </script>
 
   
 </body>
