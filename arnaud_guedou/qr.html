@@ -1,68 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code - Carte de visite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 90%;
+      max-width: 420px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px;
+    }
+    h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    img {
+      width: 70%;
+      max-width: 250px;
+      margin: 20px auto;
+      cursor: zoom-in;
+    }
+    .instructions {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .button {
+      margin: 20px auto 0;
+      display: block;
+      background-color: #6666ff;
+      color: white;
+      padding: 12px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 15px;
+      width: 80%;
+      max-width: 280px;
+    }
+    .button:hover {
+      background-color: #4d4ddf;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Votre QR Code</h2>
 
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>QR Code - arnaud_guedou</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f2f2f2;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-            }
-            .container {
-                width: 90%;
-                max-width: 400px;
-                background-color: white;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                text-align: center;
-                padding: 20px;
-            }
-            .container img {
-                width: 80%;
-                max-width: 250px;
-                margin-bottom: 20px;
-            }
-            .text {
-                font-size: 14px;
-                color: #555;
-                margin-bottom: 15px;
-            }
-            .custom-button {
-                display: block;
-                padding: 12px;
-                font-size: 15px;
-                border-radius: 6px;
-                text-align: center;
-                margin: 10px auto;
-                background-color: #6666ff;
-                color: white;
-                text-decoration: none;
-                width: 80%;
-                max-width: 300px;
-            }
-            .custom-button:hover {
-                background-color: #4d4ddf;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h2>Votre QR Code</h2>
-            <img src="qrcode.png" alt="QR Code">
-            <div class="text">
-                Scannez ou enregistrez ce code pour accéder à votre carte de visite.<br>
-                Astuce : appuyez longtemps sur le QR code pour l’ajouter à votre écran d’accueil.
-            </div>
-            <a href="index.html" class="custom-button">⬅ Retour à la carte de visite</a>
-        </div>
-    </body>
-    </html>
-    
+    <a href="qr.png" target="_blank">
+      <img src="qr.png" alt="QR Code de votre carte de visite">
+    </a>
+
+    <div class="instructions">
+      <div class="section-title">✅ Sur Android (Chrome, Edge...)</div>
+      <ul>
+        <li>Ouvrez cette page dans votre navigateur.</li>
+        <li>Appuyez sur les trois points (en haut à droite).</li>
+        <li>Choisissez <strong>« Ajouter à l'écran d'accueil »</strong>.</li>
+        <li>Nom : ex. « QR Pelichet ».</li>
+        <li>Appuyez sur <strong>« Ajouter »</strong>.</li>
+      </ul>
+      <p>🔗 Si vous voulez afficher uniquement l’image, utilisez le lien direct : <code>qr.png</code>.</p>
+
+      <div class="section-title">🍏 Sur iPhone (Safari uniquement)</div>
+      <ul>
+        <li>Ouvrez cette page dans <strong>Safari</strong>.</li>
+        <li>Appuyez sur l’icône <strong>Partager</strong> (rectangle avec flèche vers le haut).</li>
+        <li>Choisissez <strong>« Sur l’écran d’accueil »</strong>.</li>
+        <li>Nom : ex. « QR Pelichet ».</li>
+        <li>Appuyez sur <strong>« Ajouter »</strong>.</li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="button">📇 Ouvrir la carte de visite</a>
+  </div>
+</body>
+</html>
