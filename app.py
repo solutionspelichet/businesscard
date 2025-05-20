@@ -17,7 +17,7 @@ def form():
 @app.route('/submit', methods=['POST'])
 def submit():
     try:
-        # Récupération des champs
+        # 1. Récupération des données
         first_name = request.form['first_name'].strip()
         last_name = request.form['last_name'].strip()
         full_name = f"{first_name} {last_name}"
@@ -31,20 +31,17 @@ def submit():
         profile_photo = request.files['profile']
         office_photo = request.files['office']
 
-        # Création du dossier
         user_dir = os.path.join("generated", full_slug)
         os.makedirs(user_dir, exist_ok=True)
 
-        # Sauvegarde des photos
-        profile_img_name = "profile.jpg"
-        profile_path = os.path.join(user_dir, profile_img_name)
+        # 2. Enregistrement des fichiers
+        profile_path = os.path.join(user_dir, "profile.jpg")
         profile_photo.save(profile_path)
 
-        office_img_name = "office.jpg"
-        office_path = os.path.join(user_dir, office_img_name)
+        office_path = os.path.join(user_dir, "office.jpg")
         office_photo.save(office_path)
 
-        # Génération du VCF
+        # 3. VCF
         vcard_filename = f"{full_slug}.vcf"
         vcard_path = os.path.join(user_dir, vcard_filename)
         with open(vcard_path, "w") as vcf:
@@ -60,12 +57,12 @@ URL:{website}
 END:VCARD
 """.replace("\n", "\r\n"))
 
-        # Génération du QR code
+        # 4. QR Code
         card_url = f"https://solutionspelichet.github.io/businesscard/{full_slug}/index.html"
         qr = qrcode.make(card_url)
         qr.save(os.path.join(user_dir, "qr.png"))
 
-       # 5. index.html
+        # 5. index.html
         with open("templates/index_template.html", encoding="utf-8") as tpl:
             template = tpl.read()
         rendered = template.format(
@@ -88,8 +85,7 @@ END:VCARD
         with open(os.path.join(user_dir, "qr.html"), "w", encoding="utf-8") as f:
             f.write(qr_rendered)
 
-https://github.com/solutionspelichet/businesscard/tree/master
-        # Upload GitHub
+        # 7. Upload GitHub
         g = Github(GITHUB_TOKEN)
         repo = g.get_repo(GITHUB_REPO)
         branch = repo.get_branch("master")
@@ -104,20 +100,14 @@ https://github.com/solutionspelichet/businesscard/tree/master
                 repo.create_file(github_path, f"create {github_path}", content, branch=branch.name)
 
         github_folder = f"{full_slug}/"
-        upload_file(profile_path, github_folder + profile_img_name)
-        upload_file(office_path, github_folder + office_img_name)
+        upload_file(profile_path, github_folder + "profile.jpg")
+        upload_file(office_path, github_folder + "office.jpg")
         upload_file(vcard_path, github_folder + vcard_filename)
         upload_file(os.path.join(user_dir, "index.html"), github_folder + "index.html")
         upload_file(os.path.join(user_dir, "qr.png"), github_folder + "qr.png")
         upload_file(os.path.join(user_dir, "qr.html"), github_folder + "qr.html")
 
-
-        return render_template(
-    'confirmation.html',
-    full_name=full_name,
-    slug=full_slug,
-    card_url=card_url
-)
+        return f"✅ Carte générée avec succès : <a href='{card_url}' target='_blank'>{card_url}</a>"
 
     except Exception as e:
         return f"❌ Erreur : {e}"
