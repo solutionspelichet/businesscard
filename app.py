@@ -65,34 +65,29 @@ END:VCARD
         qr = qrcode.make(card_url)
         qr.save(os.path.join(user_dir, "qr.png"))
 
-        # Remplissage du HTML template
+       # 5. index.html
         with open("templates/index_template.html", encoding="utf-8") as tpl:
             template = tpl.read()
-
-        # Génération de la page QR avec qr-template.html
-        with open("templates/qr-template.html", encoding="utf-8") as tpl:
-            qr_template = tpl.read()
-
-qr_rendered = qr_template.replace("{full_name}", full_name)
-
-with open(os.path.join(user_dir, "qr.html"), "w", encoding="utf-8") as f:
-    f.write(qr_rendered)
-
-
         rendered = template.format(
-    full_name=full_name,
-    job_title=job_title,
-    company=company,
-    website=website,
-    linkedin=linkedin,
-    vcard_filename=vcard_filename,
-    profile_img="profile.jpg",
-    office_img="office.jpg"
+            full_name=full_name,
+            job_title=job_title,
+            company=company,
+            website=website,
+            linkedin=linkedin,
+            vcard_filename=vcard_filename,
+            profile_img="profile.jpg",
+            office_img="office.jpg"
         )
-
-        # Sauvegarde de la page HTML
         with open(os.path.join(user_dir, "index.html"), "w", encoding="utf-8") as html:
             html.write(rendered)
+
+        # 6. qr.html à partir de qr-template
+        with open("templates/qr-template.html", encoding="utf-8") as tpl:
+            qr_template = tpl.read()
+        qr_rendered = qr_template.replace("{full_name}", full_name)
+        with open(os.path.join(user_dir, "qr.html"), "w", encoding="utf-8") as f:
+            f.write(qr_rendered)
+
 https://github.com/solutionspelichet/businesscard/tree/master
         # Upload GitHub
         g = Github(GITHUB_TOKEN)
