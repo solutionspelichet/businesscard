@@ -107,7 +107,13 @@ END:VCARD
         upload_file(os.path.join(user_dir, "qr.png"), github_folder + "qr.png")
         upload_file(os.path.join(user_dir, "qr.html"), github_folder + "qr.html")
 
-        return f"✅ Carte générée avec succès : <a href='{card_url}' target='_blank'>{card_url}</a>"
+        return render_template(
+    'confirmation.html',
+    full_name=full_name,
+    slug=full_slug,
+    card_url=card_url
+)
+
 
     except Exception as e:
         return f"❌ Erreur : {e}"
