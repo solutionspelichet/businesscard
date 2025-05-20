@@ -46,7 +46,7 @@ def submit():
                 with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
                     dst.write(src.read())
 
-        office_path = os.path.join(user_dir, office_img_name
+        office_path = os.path.join(user_dir, office_img_name)
         if office_photo and office_photo.filename:
             office_photo.save(office_path)
         else:
