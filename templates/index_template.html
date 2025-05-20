@@ -108,9 +108,11 @@
       <a href="{vcard_filename}" download class="custom-button">Télécharger la vCard</a>
       <a href="qr.png" class="custom-button" target="_blank">Voir le QR Code</a>
     </div>
+  <div id="confirmation" style="display:none; color: green; margin-bottom: 20px; font-size: 14px;">
+      ✅ vCard téléchargée avec succès.
+    </div>
   </div>
 
-  
   <script>
     window.onload = function() {
       const link = document.createElement("a");
@@ -131,7 +133,6 @@
       }, 4000);
     };
   </script>
-
   
 </body>
 </html>
