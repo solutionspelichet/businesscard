@@ -41,12 +41,16 @@ def submit():
         office_path = os.path.join(user_dir, office_img_name)
 
         # Profile photo
-        if profile_photo and profile_photo.filename:
-            profile_photo.save(profile_path)
-        else:
-            default_profile = os.path.join("static", "profile-defaut.jpg")
-            with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
-                dst.write(src.read())
+        try:
+    if profile_photo and profile_photo.filename.strip() != "":
+        profile_photo.save(profile_path)
+    else:
+        raise ValueError("Aucune photo de profil fournie.")
+except Exception:
+    default_profile = os.path.join("static", "profile-defaut.jpg")
+    with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
+        dst.write(src.read())
+
 
         # Office photo
         if office_photo and office_photo.filename:
