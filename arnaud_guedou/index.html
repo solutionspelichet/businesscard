@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arnaud Guedou - Carte de visite</title>
+  <title>arnaud GUEDOU - Carte de visite</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -90,15 +90,25 @@
       <div class="avatar"></div>
     </div>
     <div class="user-info">
-      <div class="user-name">Arnaud Guedou</div>
-      <div class="user-title">Key account manager  - Pelichet </div>
+      <div class="user-name">arnaud GUEDOU</div>
+      <div class="user-title">CEO-Fondateur - Symphony3d</div>
     </div>
     <div class="buttons">
-      <a href="http://www.pelichet.ch" class="custom-button">Site web</a>
-      <a href="http://www.linkedin.com" class="custom-button">LinkedIn</a>
+      <a href="http://www.symphony3d.io" class="custom-button">Site web</a>
+      <a href="https://www.linkedin.com/in/arnaudguedou" class="custom-button">LinkedIn</a>
       <a href="arnaud_guedou.vcf" download class="custom-button">Télécharger la vCard</a>
-      <a href="qr.png" class="custom-button">Voir le QR Code</a>
+      <a href="qr.html" class="custom-button">Voir le QR Code</a>
+
     </div>
   </div>
+
+  <script>
+    window.onload = function () {
+      setTimeout(function () {
+        const link = document.querySelector('a[download]');
+        if (link) link.click();
+      }, 500);
+    };
+  </script>
 </body>
 </html>
