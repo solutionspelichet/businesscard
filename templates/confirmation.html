@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carte générée</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+    h2 {
+      color: #333;
+    }
+    .preview-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 15px;
+      object-fit: cover;
+      margin: 15px auto;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    }
+    .qr-code {
+      margin-top: 20px;
+      width: 140px;
+      height: 140px;
+    }
+    a.button {
+      display: block;
+      background-color: #6666ff;
+      color: white;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    a.button:hover {
+      background-color: #4d4ddf;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Carte générée avec succès !</h2>
+    <img src="https://solutionspelichet.github.io/businesscard/{{ slug }}/profile.jpg" alt="Photo de profil" class="preview-img" />
+    <p>Carte de <strong>{{ full_name }}</strong></p>
+    <a class="button" href="{{ card_url }}" target="_blank">Voir la carte</a>
+    <img src="https://solutionspelichet.github.io/businesscard/{{ slug }}/qr.png" alt="QR Code" class="qr-code" />
+    <a class="button" href="/">Créer une nouvelle carte</a>
+  </div>
+</body>
+</html>
