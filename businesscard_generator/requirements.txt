@@ -1,5 +1,0 @@
-Flask
-gunicorn
-qrcode
-python-dotenv
-PyGithub
