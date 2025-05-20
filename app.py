@@ -35,7 +35,9 @@ def submit():
         os.makedirs(user_dir, exist_ok=True)
 
         # 2. Enregistrement des fichiers
-        profile_path = os.path.join(user_dir, "profile.jpg")
+        profile_img_name = "profile.jpg"
+        office_img_name = "office.jpg"
+        profile_path = os.path.join(user_dir, profile_img_name)
         if profile_photo and profile_photo.filename:
             profile_photo.save(profile_path)
         else:
@@ -44,7 +46,7 @@ def submit():
                 with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
                     dst.write(src.read())
 
-        office_path = os.path.join(user_dir, "office.jpg")
+        office_path = os.path.join(user_dir, office_img_name
         if office_photo and office_photo.filename:
             office_photo.save(office_path)
         else:
