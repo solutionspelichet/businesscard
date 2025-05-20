@@ -35,11 +35,26 @@ def submit():
         os.makedirs(user_dir, exist_ok=True)
 
         # 2. Enregistrement des fichiers
-        profile_path = os.path.join(user_dir, "profile.jpg")
-        profile_photo.save(profile_path)
+        # 📸 Photo de profil
+profile_path = os.path.join(user_dir, "profile.jpg")
+if profile_photo and profile_photo.filename:
+    profile_photo.save(profile_path)
+else:
+    default_profile = os.path.join("static", "profile-defaut.jpg")
+    if os.path.exists(default_profile):
+        with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
+            dst.write(src.read())
 
-        office_path = os.path.join(user_dir, "office.jpg")
-        office_photo.save(office_path)
+# 🏢 Photo du bureau
+office_path = os.path.join(user_dir, "office.jpg")
+if office_photo and office_photo.filename:
+    office_photo.save(office_path)
+else:
+    default_office = os.path.join("static", "office-defaut.jpg")
+    if os.path.exists(default_office):
+        with open(default_office, "rb") as src, open(office_path, "wb") as dst:
+            dst.write(src.read())
+
 
         # 3. VCF
         vcard_filename = f"{full_slug}.vcf"
