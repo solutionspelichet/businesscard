@@ -34,28 +34,25 @@ def submit():
         user_dir = os.path.join("generated", full_slug)
         os.makedirs(user_dir, exist_ok=True)
 
-        # 2. Enregistrement des fichiers avec fallback si vide
-        profile_img_name = "profile.jpg"
-        office_img_name = "office.jpg"
-        profile_path = os.path.join(user_dir, profile_img_name)
-        office_path = os.path.join(user_dir, office_img_name)
-
-        # Profile photo
+        # 2. Enregistrement des fichiers
+        profile_path = os.path.join(user_dir, "profile.jpg")
         try:
-    if profile_photo and profile_photo.filename.strip() != "":
-        profile_photo.save(profile_path)
-    else:
-        raise ValueError("Aucune photo de profil fournie.")
-except Exception:
-    default_profile = os.path.join("static", "profile-defaut.jpg")
-    with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
-        dst.write(src.read())
+            if profile_photo and profile_photo.filename.strip() != "":
+                profile_photo.save(profile_path)
+            else:
+                raise ValueError("Aucune photo de profil")
+        except Exception:
+            default_profile = os.path.join("static", "profile-defaut.jpg")
+            with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
+                dst.write(src.read())
 
-
-        # Office photo
-        if office_photo and office_photo.filename:
-            office_photo.save(office_path)
-        else:
+        office_path = os.path.join(user_dir, "office.jpg")
+        try:
+            if office_photo and office_photo.filename.strip() != "":
+                office_photo.save(office_path)
+            else:
+                raise ValueError("Aucune photo bureau")
+        except Exception:
             default_office = os.path.join("static", "office-defaut.jpg")
             with open(default_office, "rb") as src, open(office_path, "wb") as dst:
                 dst.write(src.read())
@@ -79,8 +76,7 @@ END:VCARD
         # 4. QR Code
         card_url = f"https://solutionspelichet.github.io/businesscard/{full_slug}/index.html"
         qr = qrcode.make(card_url)
-        qr_path = os.path.join(user_dir, "qr.png")
-        qr.save(qr_path)
+        qr.save(os.path.join(user_dir, "qr.png"))
 
         # 5. index.html
         with open("templates/index_template.html", encoding="utf-8") as tpl:
@@ -92,20 +88,20 @@ END:VCARD
             website=website,
             linkedin=linkedin,
             vcard_filename=vcard_filename,
-            profile_img=profile_img_name,
-            office_img=office_img_name
+            profile_img="profile.jpg",
+            office_img="office.jpg"
         )
         with open(os.path.join(user_dir, "index.html"), "w", encoding="utf-8") as html:
             html.write(rendered)
 
-        # 6. qr.html
+        # 6. qr.html à partir de qr-template
         with open("templates/qr-template.html", encoding="utf-8") as tpl:
             qr_template = tpl.read()
         qr_rendered = qr_template.replace("{full_name}", full_name)
         with open(os.path.join(user_dir, "qr.html"), "w", encoding="utf-8") as f:
             f.write(qr_rendered)
 
-        # 7. Upload vers GitHub
+        # 7. Upload GitHub
         g = Github(GITHUB_TOKEN)
         repo = g.get_repo(GITHUB_REPO)
         branch = repo.get_branch("master")
@@ -120,11 +116,11 @@ END:VCARD
                 repo.create_file(github_path, f"create {github_path}", content, branch=branch.name)
 
         github_folder = f"{full_slug}/"
-        upload_file(profile_path, github_folder + profile_img_name)
-        upload_file(office_path, github_folder + office_img_name)
+        upload_file(profile_path, github_folder + "profile.jpg")
+        upload_file(office_path, github_folder + "office.jpg")
         upload_file(vcard_path, github_folder + vcard_filename)
         upload_file(os.path.join(user_dir, "index.html"), github_folder + "index.html")
-        upload_file(qr_path, github_folder + "qr.png")
+        upload_file(os.path.join(user_dir, "qr.png"), github_folder + "qr.png")
         upload_file(os.path.join(user_dir, "qr.html"), github_folder + "qr.html")
 
         return render_template(
