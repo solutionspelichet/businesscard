@@ -28,32 +28,33 @@ def submit():
         company = request.form['company']
         linkedin = request.form['linkedin']
         website = request.form['website']
-        profile_photo = request.files['profile']
-        office_photo = request.files['office']
+        profile_photo = request.files.get('profile')
+        office_photo = request.files.get('office')
 
         user_dir = os.path.join("generated", full_slug)
         os.makedirs(user_dir, exist_ok=True)
 
-        # 2. Enregistrement des fichiers
+        # 2. Enregistrement des fichiers avec fallback si vide
         profile_img_name = "profile.jpg"
         office_img_name = "office.jpg"
         profile_path = os.path.join(user_dir, profile_img_name)
+        office_path = os.path.join(user_dir, office_img_name)
+
+        # Profile photo
         if profile_photo and profile_photo.filename:
             profile_photo.save(profile_path)
         else:
             default_profile = os.path.join("static", "profile-defaut.jpg")
-            if os.path.exists(default_profile):
-                with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
-                    dst.write(src.read())
+            with open(default_profile, "rb") as src, open(profile_path, "wb") as dst:
+                dst.write(src.read())
 
-        office_path = os.path.join(user_dir, office_img_name)
+        # Office photo
         if office_photo and office_photo.filename:
             office_photo.save(office_path)
         else:
             default_office = os.path.join("static", "office-defaut.jpg")
-            if os.path.exists(default_office):
-                with open(default_office, "rb") as src, open(office_path, "wb") as dst:
-                    dst.write(src.read())
+            with open(default_office, "rb") as src, open(office_path, "wb") as dst:
+                dst.write(src.read())
 
         # 3. VCF
         vcard_filename = f"{full_slug}.vcf"
@@ -74,7 +75,8 @@ END:VCARD
         # 4. QR Code
         card_url = f"https://solutionspelichet.github.io/businesscard/{full_slug}/index.html"
         qr = qrcode.make(card_url)
-        qr.save(os.path.join(user_dir, "qr.png"))
+        qr_path = os.path.join(user_dir, "qr.png")
+        qr.save(qr_path)
 
         # 5. index.html
         with open("templates/index_template.html", encoding="utf-8") as tpl:
@@ -86,8 +88,8 @@ END:VCARD
             website=website,
             linkedin=linkedin,
             vcard_filename=vcard_filename,
-            profile_img="profile.jpg",
-            office_img="office.jpg"
+            profile_img=profile_img_name,
+            office_img=office_img_name
         )
         with open(os.path.join(user_dir, "index.html"), "w", encoding="utf-8") as html:
             html.write(rendered)
@@ -99,7 +101,7 @@ END:VCARD
         with open(os.path.join(user_dir, "qr.html"), "w", encoding="utf-8") as f:
             f.write(qr_rendered)
 
-        # 7. Upload GitHub
+        # 7. Upload vers GitHub
         g = Github(GITHUB_TOKEN)
         repo = g.get_repo(GITHUB_REPO)
         branch = repo.get_branch("master")
@@ -114,11 +116,11 @@ END:VCARD
                 repo.create_file(github_path, f"create {github_path}", content, branch=branch.name)
 
         github_folder = f"{full_slug}/"
-        upload_file(profile_path, github_folder + "profile.jpg")
-        upload_file(office_path, github_folder + "office.jpg")
+        upload_file(profile_path, github_folder + profile_img_name)
+        upload_file(office_path, github_folder + office_img_name)
         upload_file(vcard_path, github_folder + vcard_filename)
         upload_file(os.path.join(user_dir, "index.html"), github_folder + "index.html")
-        upload_file(os.path.join(user_dir, "qr.png"), github_folder + "qr.png")
+        upload_file(qr_path, github_folder + "qr.png")
         upload_file(os.path.join(user_dir, "qr.html"), github_folder + "qr.html")
 
         return render_template(
@@ -130,6 +132,7 @@ END:VCARD
 
     except Exception as e:
         return f"❌ Erreur : {e}"
+
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
