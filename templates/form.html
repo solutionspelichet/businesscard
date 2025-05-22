@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Créer votre carte de visite</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      width: 90%;
+      max-width: 400px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="email"], input[type="url"], input[type="tel"], input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      background-color: #6666ff;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #4d4ddf;
+    }
+  </style>
+</head>
+<body>
+  <form class="form-container" action="/submit" method="POST" enctype="multipart/form-data">
+    <h2>Créer votre carte de visite</h2>
+
+    <label for="first_name">Prénom</label>
+    <input type="text" name="first_name" required>
+
+    <label for="last_name">Nom</label>
+    <input type="text" name="last_name" required>
+
+    <label for="job_title">Poste</label>
+    <input type="text" name="job_title">
+
+    <label for="company">Entreprise</label>
+    <input type="text" name="company">
+
+    <label for="email">Email</label>
+    <input type="email" name="email">
+
+    <label for="phone">Téléphone</label>
+    <input type="tel" name="phone">
+
+    <label for="website">Site Web</label>
+    <input type="url" name="website">
+
+    <label for="linkedin">Profil LinkedIn</label>
+    <input type="url" name="linkedin">
+
+    <label for="profile">Photo de profil</label>
+    <input type="file" name="profile" accept="image/*">
+
+    <label for="office">Photo d'en tête</label>
+    <input type="file" name="office" accept="image/*">
+
+    <button type="submit">Générer la carte</button>
+  </form>
+</body>
+</html>
